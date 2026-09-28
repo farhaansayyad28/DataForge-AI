@@ -45,6 +45,8 @@ if uploaded_file is not None:
 
         with col4:
             st.metric("Duplicate Rows", profile["duplicate_rows"])
+        
+        st.metric("Data Quality Score", f"{profile['quality_score']:.2f}%")
 
         st.subheader("Column Information")
 
