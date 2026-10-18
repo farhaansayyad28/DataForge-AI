@@ -1,0 +1,33 @@
+
+[
+  {
+    "Name": "Rahul",
+    "Age": 21,
+    "City": "Pune",
+    "Salary": 45000
+  },
+  {
+    "Name": "Amit",
+    "Age": null,
+    "City": "Mumbai",
+    "Salary": 50000
+  },
+  {
+    "Name": "Sneha",
+    "Age": 20,
+    "City": null,
+    "Salary": 42000
+  },
+  {
+    "Name": "John",
+    "Age": 23,
+    "City": "Delhi",
+    "Salary": 60000
+  },
+  {
+    "Name": "Rahul",
+    "Age": 21,
+    "City": "Pune",
+    "Salary": 45000
+  }
+]
