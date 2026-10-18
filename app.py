@@ -46,7 +46,34 @@ if uploaded_file is not None:
         with col4:
             st.metric("Duplicate Rows", profile["duplicate_rows"])
         
-        st.metric("Data Quality Score", f"{profile['quality_score']:.2f}%")
+        score_col1, score_col2, score_col3 = st.columns(3)
+
+        with score_col1:
+            completeness = profile["completeness_score"]
+            st.metric(
+                "Completeness",
+                f"{completeness:.2f}%" if completeness is not None else "N/A",
+            )
+
+        with score_col2:
+            uniqueness = profile["uniqueness_score"]
+            st.metric(
+                "Row Uniqueness",
+                f"{uniqueness:.2f}%" if uniqueness is not None else "N/A",
+            )
+
+        with score_col3:
+            quality = profile["quality_score"]
+            st.metric(
+                "Overall Quality Score",
+                f"{quality:.2f}%" if quality is not None else "N/A",
+            )
+
+        st.caption(
+            "Overall quality is the average of completeness (non-missing cells) "
+            "and row uniqueness (the share of nonduplicate rows). Row uniqueness "
+            "measures duplicate rows, not unique values in individual columns."
+        )
 
         st.subheader("Column Information")
 
