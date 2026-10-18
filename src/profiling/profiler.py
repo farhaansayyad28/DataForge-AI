@@ -1,6 +1,7 @@
 def profile_dataset(data):
     total_cells = data.shape[0] * data.shape[1]
     total_missing = data.isnull().sum().sum()
+    # Completeness is undefined when there are no cells to measure.
     completeness_score = (
         ((total_cells - total_missing) / total_cells) * 100
         if total_cells > 0
@@ -8,11 +9,13 @@ def profile_dataset(data):
     )
     duplicate_rows = int(data.duplicated().sum())
     unique_rows = data.shape[0] - duplicate_rows
+    # Rows cannot be meaningfully compared without both rows and columns.
     uniqueness_score = (
         (unique_rows / data.shape[0]) * 100
         if data.shape[0] > 0 and data.shape[1] > 0
         else None
     )
+    # Only average the component scores when both are defined.
     quality_score = (
         (completeness_score + uniqueness_score) / 2
         if completeness_score is not None and uniqueness_score is not None
